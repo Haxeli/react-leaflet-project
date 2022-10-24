@@ -1,8 +1,11 @@
 import React from 'react'
+import './SearchBox.css'
 
 function SearchBox() {
   return (
-    <div>SearchBox</div>
+    <div className='SearchBox'>
+        SearchBox
+    </div>
   )
 }
 

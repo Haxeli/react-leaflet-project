@@ -4,6 +4,7 @@ import { SpeedDial, SpeedDialIcon } from '@mui/material'
 import SpeedDialAction from '@mui/material/SpeedDialAction'
 import ExploreIcon from '@mui/icons-material/Explore'
 import EditIcon from '@mui/icons-material/Edit'
+import SearchBox from './SearchBox'
 
 function MapBox() {
     const [showSearch, setShowSearch] = useState(false)
@@ -11,8 +12,16 @@ function MapBox() {
     
 
   return (
-    <div className='MapBox'>
-        <MapContainer center={[53.3498, -6.2603]} zoom={11}>
+    <div
+        className='MapBox'
+        style={{
+            visibility: showSearch !== true ? {width: '100vw', height: '100vh'} : {width: '80vw', height: '100vh'}
+        }}  
+    >
+        <MapContainer
+            center={[53.3498, -6.2603]}
+            zoom={11}
+        >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -29,6 +38,7 @@ function MapBox() {
                 onClick={() => setShowSearch(!showSearch)}
             />
         </SpeedDial>
+        {showSearch && <SearchBox />}
       </MapContainer>
     </div>
   )
